@@ -3,7 +3,7 @@ import { Exclude, Expose, Type } from 'class-transformer';
 import { FullBaseDto, ShortBaseDto } from '../../../common/dtos';
 import { Gender, Role, DocumentType } from '../../enums';
 import { SerializerSocialWorkDto } from '..';
-import { IsOptional } from 'class-validator';
+
 
 export class SerializerUserDto extends FullBaseDto {
   @Expose()
