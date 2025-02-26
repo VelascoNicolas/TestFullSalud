@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable prefer-const */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BaseService } from '../../common/bases/base.service';
@@ -5,7 +7,6 @@ import { ErrorManager } from '../../common/exceptions/error.manager';
 import {
   UserDto,
   UpdateUserDto,
-  UserPaginationDto,
   AuthUserDto,
   SerializerUserDto
 } from '../../domain/dtos';
@@ -15,10 +16,7 @@ import { Patient, Practitioner, User } from '../../domain/entities';
 import { Role } from '../../domain/enums/role.enum';
 import {
   DataSource,
-  EntityManager,
-  FindManyOptions,
   Repository,
-  SelectQueryBuilder
 } from 'typeorm';
 // import { PatientsNotificationPreferencesService } from '../patients_notification_preferences/patients-notification-preferences.service';
 // import { SpecialistsNotificationPreferencesService } from '../specialists_notification_preferences/specialists-notification-preferences.service';
@@ -26,19 +24,12 @@ import {
 // import { AdminsNotificationPreferencesService } from '../admins_notification_preferences/admins-notification-preferences.service';
 // import { SecretaryNotificationPreferencesService } from '../secretary_notification_preferences/secretary-notification-preferences.service';
 // import { SpecialistsSecretaryNotificationPreferencesService } from '../specialists_secretary_notification_preferences/specialists-secretary-notification-preferences.service';
-import {
-  getPagingData,
-  PaginationMetadata
-} from '../../common/util/pagination-data.util';
-import {
-  Conditions,
-  DynamicQueryBuilder
-} from '../../common/util/dynamic-query-builder.util';
 // import { NotificationsService } from '../notifications/notifications.service';
 import * as bcrypt from 'bcryptjs';
 import { plainToInstance } from 'class-transformer';
 import { JwtService } from '@nestjs/jwt';
 import { envConfig } from '../../config/envs';
+import { put } from '@vercel/blob';
 
 @Injectable()
 export class AuthService extends BaseService<
@@ -208,6 +199,14 @@ export class AuthService extends BaseService<
     } catch (error) {
       throw ErrorManager.createSignatureError((error as Error).message);
     }    
+  }
+
+  async uploadImage(file: Express.Multer.File): Promise<string> {
+    const blob = await put(file.originalname, file.buffer, {
+      access: 'public',
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+    });
+    return blob.url;
   }
     
 }

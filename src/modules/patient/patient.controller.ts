@@ -7,11 +7,10 @@ import {
   SerializerPatientDto,
   UpdatePatientDto
 } from '../../domain/dtos';
-import { ApiCreatedResponse, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthGuard, Roles, RolesGuard } from '../auth/guards/auth.guard';
 import { Role } from '../../domain/enums/role.enum';
-import { toDto, toDtoList } from '../../common/util/transform-dto.util';
-import { plainToInstance } from 'class-transformer';
+import { toDto } from '../../common/util/transform-dto.util';
 
 @ApiTags('Patient')
 @Controller('patient')

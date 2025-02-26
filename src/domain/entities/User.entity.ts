@@ -1,12 +1,11 @@
 import { Base } from '../../common/bases/base.entity';
-import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany } from 'typeorm';
+import { Column, Entity, JoinColumn, JoinTable, ManyToOne } from 'typeorm';
 import { DocumentType } from '../enums/document-type.enum';
 import { Gender } from '../enums/gender.enum';
 import { Role } from '../enums/role.enum';
 
 import { ApiProperty } from '@nestjs/swagger';
 import { Address } from './Address.entity';
-import { Exclude, Expose } from 'class-transformer';
 import { SocialWork } from './SocialWork.entity';
 
 @Entity('user')
