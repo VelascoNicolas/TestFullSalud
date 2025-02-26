@@ -79,8 +79,8 @@ export * from './practitioner-appointment/PractitionerAppointment.dto';
 export * from './practitioner-appointment/PractitionerAppointment-serializer.dto';
 export * from './category/Category.dto';
 export * from './category/Category-serializer.dto';
-export * from './notification/Notification.dto';
-export * from './notification/Notification-serializer.dto';
+export * from './notification/notification.dto'
+export * from './notification/notification-serializer.dto';
 export * from './location/Location-serializer.dto';
 export * from './location/Location.dto';
 export * from './practitioner-secretary/PractitionerSecretary-serializer.dto';
