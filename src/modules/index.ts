@@ -39,6 +39,6 @@ export * from './social_work_enrollment/SocialWorkEnrollment.module';
 export * from './patient/patient.module';
 export * from './location/Location.module';
 export * from './practitioner_secretary/PractitionerSecretary.module';
-export * from './notification/notification.module';
+export * from './notification/Notification.module';
 export * from './patient_appointment/PatientAppointment.module';
 export * from './patient_practitioner_favorite/PatientPractitionerFavorite.module';
