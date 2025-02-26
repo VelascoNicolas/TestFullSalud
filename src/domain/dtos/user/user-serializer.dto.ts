@@ -50,7 +50,7 @@ export class SerializerUserDto extends FullBaseDto {
   @ApiProperty({ example: 'https://rybwefx6jybsfaoy.public.blob.vercel-storage.com/colapinto-z9UMp9pG9UAu6DZm3s1ajWCBJDpN9H.jpg' })
   urlImg: string;
 
-  @Exclude()
+  //@Exclude()
   @ApiProperty({
     example: Object.values(Role).join(' | ')
   })
